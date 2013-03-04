@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ meta_description }}">
+    <meta name="author" content="{{ meta_author }}">
+    {% block headmetadata %}{% endblock %}
+        
+    <style type="text/css">
+    {% block headcss %}
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    {% endblock %}
+    </style>
+    
+    <!-- Le styles -->
+    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    {% block favicon %}
+    <link rel="shortcut icon" href="{{ STATIC_URL }}/favicon.ico">
+    {% endblock %}
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    
+    {% block applicationcss %}{% endblock %}
+    
+    {% block headjs %}{% endblock %}
+
+  </head>
+
+  <body {% block bodyattributes %}{% endblock %}>
+
+    {% block topnav %}{% endblock %}
+
+    {% block topnavunder %}{% endblock %}
+    
+	{% block messages %}
+        {% if messages %}
+        <div class="container">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+	{% endblock %}
+    
+    {% block containerwrapper %}
+    
+        <div class="{% block containerclass %}container{% endblock %}">
+            
+        {% block appmenu %}{% endblock %}
+    
+        {% block breadcrumbs %}{% endblock %}
+    
+        {% block body %}{% endblock %}
+        {% block content %}{% endblock %}
+
+        {% block bodycommon %}{% endblock %}
+        </div> <!-- /container -->
+        
+    {% endblock %}
+    
+    {% block footerwrapper %}
+    <div class="container">
+    <footer class="footer">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        {% block footer %}
+        <p>Utviklet av Dataselskapet AS v/<a href="http://www.loyning.net" target="_blank">Rune L&oslash;yning</a> <a href="http://twitter.com/runeloyning" target="_blank">@runeloyning</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        {% endblock %}
+      </footer>
+    </div>
+      
+    {% endblock %}
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+    {% comment %}
+    <script src="{{ STATIC_URL }}bootstrap/js/jquery.min.js"></script>
+    
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-transition.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-alert.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-modal.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-tab.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-popover.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-button.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap-typeahead.js"></script>
+    {% endcomment %}
+    
+    {% block applicationjs %}{% endblock %}
+    
+    {% comment %}
+    <!-- GOOGLE API -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>    
+    <script>
+      google.load("visualization", "1", {packages:["corechart"]});
+    </script>
+    {% endcomment %}
+
+    <script>
+    {% block bodyjs %}{% endblock %}
+    $(document).ready(function() 
+        { 
+            {% block onready %}{% endblock %}
+        }); 
+    </script>
+    
+    {% block analytics %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,15 @@
+A new comment has been posted for {{content_object.title}}.
+
+http://www.site.co.uk{{content_object.get_absolute_url}}
+
+Name: {{comment.user_name}}
+Email: {{comment.user_email}}
+Url: {{comment.user_url}}
+Comment:
+{{comment.comment}}
+
+http://www.site.co.uk/comments/delete/{{comment.id}}/
+
+{% if not comment.is_public %}
+http://www.site.co.uk/comments/approve/{{comment.id}}/
+{% endif %}

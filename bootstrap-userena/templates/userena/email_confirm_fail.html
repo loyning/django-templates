@@ -1,0 +1,13 @@
+{% extends 'testapp_profile_base.html' %}
+{% load i18n %}
+{% load url from future %}
+
+{% block title %}{% trans "Email verification failed." %}{% endblock %}
+{% block content_title %}<h2>{% trans "Your email could not be verified..." %}</h2>{% endblock %}
+
+{% block body %}
+
+<p>{% trans "Your email could not be verified..." %}</p>
+<p>{% trans "You could try changing it again in your account settings." %}</p>
+
+{% endblock %}
