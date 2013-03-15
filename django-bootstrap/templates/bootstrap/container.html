@@ -91,7 +91,9 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    {% block jquery %}
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    {% endblock %}
     <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
     {% comment %}
     <script src="{{ STATIC_URL }}bootstrap/js/jquery.min.js"></script>
