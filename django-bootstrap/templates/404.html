@@ -1,18 +1,18 @@
 {% extends 'bootstrap.html' %}
+{% load i18n %}
 
-{% block title %}404 - not found{% endblock %}
-
+{% block title %}404 - {% trans 'not found' %}{% endblock %}
 {% block body %}
 
 <div class="hero-unit">
-  <h1>404 - not found</h1>
-  <p>Page not found</p>
+  <h1>Sorry, dette er en 404 side</h1>
+  <p>{% trans 'Page not found' %}: {{ request_path }}</p>
 </div>
 
 <div>
   <p>
     <a class="btn btn-primary btn-large" href="/">
-      Take me to the frontpage
+      Take me to the frontpage.
     </a>
   </p>
 </div>
